@@ -9,18 +9,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
     <link rel="stylesheet" href="static/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body id="page-top">
     <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">exec</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-                value="Menu"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">EXEC</a>
+            <!-- <button class="navbar-toggler navbar-toggler-right"
+                data-toggle="collapse" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i>
+            </button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download">LOGIN</a></li>
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download">SIGNUP</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger"
+                            href="#download">LOGIN</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger"
+                            href="#download">SIGNUP</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
     <header class="masthead" style="background-image:url('static/img/intro-bg.jpg');">
@@ -29,7 +35,9 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <h1 class="brand-heading">exec</h1>
-                        <p class="intro-text">Execute own scripts with API</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a></div>
+                        <p class="intro-text">Execute own scripts with API</p><a class="btn btn-link btn-circle" role="button"
+                            href="#about"><i class="fa fa-angle-double-down animated"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,11 +47,50 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2>About EXEC</h2>
-                    <p>EXEC is solution.</p>
+                    <p>EXEC is script execute engine.</p>
                 </div>
             </div>
         </div>
     </section>
+    <section id="how" class="content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>How</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Script</h4>
+                            <h6 class="text-muted card-subtitle mb-2">Write own script</h6>
+                            <p class="card-text left">
+                                def fib(n):<br/>
+                                　　a, b = 0, 1<br/>
+                                　　while a < n:<br/>
+                                　　　　print(a, end=' ')<br/>
+                                　　　　a, b = b, a+b<br/>
+                                　　print()<br/>
+                                fib(1000)<br/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">POST</h4>
+                            <h6 class="text-muted card-subtitle mb-2">POST script to EXEC</h6>
+                            <p class="card-text">Post script to '/execute/'</p>
+                            <a class="card-link" href="#">WEB TESTER</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="content-section text-center">
         <div class="container">
             <div class="row">
@@ -51,13 +98,19 @@
                     <h2>FOLLOW EXEC</h2>
                     <p>Follow EXEC team!</p>
                     <ul class="list-inline banner-social-buttons">
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-github fa-fw"></i><span class="network-name">&nbsp;github</span></button></li>
+                        <li class="list-inline-item">&nbsp;
+                            <a href="https://github.com/kekeho/exec/">
+                                <button class="btn btn-primary btn-lg btn-default" type="button">
+                                    <i class="fa fa-github fa-fw"></i>
+                                    <span class="network-name">&nbsp;github</span>
+                                </button>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    <div class="map-clean"><iframe allowfullscreen="" frameborder="0" width="100%" height="450" src="https://www.google.com/maps/embed/v1/place?key=+&amp;q=Paris%2C+France&amp;zoom=15"></iframe></div>
     <footer>
         <div class="container text-center">
             <p>Copyright ©&nbsp;EXEC 2018</p>

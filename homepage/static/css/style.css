@@ -1,0 +1,35 @@
+.brand-heading {
+    background-color: white;
+    color: rgb(32, 32, 32);
+}
+
+.intro-text {
+    background-color: rgb(242, 242, 242);
+    color: rgb(37, 37, 37);
+}
+
+section#how.content-section {
+    background-color: white;
+}
+
+.card {
+    background-color: white;
+    height: 100%;
+}
+
+.card-title {
+    color: black;
+}
+
+.card-text {
+    color: black;
+}
+
+a.card-link {
+    color: black;
+}
+
+p.left {
+    text-align: left;
+    padding: 0 1.5rem;
+}
