@@ -28,7 +28,10 @@ except KeyError:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 try:
-    DEBUG = bool(os.environ['DEBUG'])
+    if os.environ['DEBUG'] == 'False':
+        DEBUG = False
+    else:
+        DEBUG = True
 except KeyError:
     # Local setting
     DEBUG = True
