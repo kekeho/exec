@@ -20,7 +20,7 @@ def script_validator(script: str):
 
 
 class MethodNotAllowed(HttpResponse):
-    status_code = 505
+    status_code = 405
 
 
 class Script():
@@ -50,7 +50,7 @@ buffer.close()
 def execute_front(request):
     # raise 505
     if request.method != 'GET':
-        return MethodNotAllowed('<h1>505 METHOD NOT ALLOWED</h1>')
+        return MethodNotAllowed('<h1>405 METHOD NOT ALLOWED</h1>')
 
     return render(request, 'execute_front.html')
 
@@ -59,7 +59,7 @@ def execute_front(request):
 def execute_string(request):
     # raise 505
     if request.method != 'POST':
-        return MethodNotAllowed('<h1>505 METHOD NOT ALLOWED</h1>')
+        return MethodNotAllowed('<h1>405 METHOD NOT ALLOWED</h1>')
 
     script = Script(request.POST['script'])
     script.execute()
