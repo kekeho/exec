@@ -3,20 +3,11 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import uuid
 import os
-import re
+import docker
 
 APP_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BUFFER_ROOT = os.path.join(APP_ROOT, 'execute/buffers')
-
-
-def script_validator(script: str):
-    # FUCK YOU HACKING CODE
-    black_list = ['subprocess', 'sys', 'os', 'exec']
-    errors = [module for module in black_list if re.findall('[^\'\";.]'+module, script)]
-    if len(errors) != 0:
-        raise TypeError('Can\'t exec!')
-
-    return script
+SCRIPTS_ROOT = os.path.join(APP_ROOT, 'execute/scripts')
+DOCKER_FILE_ROOT = os.path.join(APP_ROOT, 'execute/')
 
 
 class MethodNotAllowed(HttpResponse):
@@ -25,26 +16,22 @@ class MethodNotAllowed(HttpResponse):
 
 class Script():
     def __init__(self, script: str):
-        script = script_validator(script)
-
-        request_uuid = uuid.uuid4()
-        self.buffer_filename = BUFFER_ROOT + '/' + str(request_uuid) + '.buf'
-        header = f"""__all__ = ['sys']
-import sys
-buffer = open('{self.buffer_filename}', 'w')
-sys.stdout = buffer
-"""
-        footer = f"""
-buffer.close()
-"""
-        self.script = header + script + footer
+        self.uuid = uuid.uuid4()
+        self.script = script
         self.result = None
 
     def execute(self):
-        exec(self.script)
-        with open(self.buffer_filename) as buffer:
-            self.result = buffer.read()
-        os.remove(self.buffer_filename)
+        with open(f'{SCRIPTS_ROOT}/{self.uuid}.py', 'w') as script:
+            script.write(self.script)
+
+        client = docker.from_env()
+        client.images.build(path=DOCKER_FILE_ROOT, tag='exec-python:3.7', rm=True)
+        try:
+            self.result = client.containers.run('exec-python:3.7', str(self.uuid))
+        except docker.errors.ContainerError as e:
+            self.result = str(e)
+        finally:
+            os.remove(f'{SCRIPTS_ROOT}/{self.uuid}.py')
 
 
 def execute_front(request):

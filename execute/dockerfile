@@ -1,0 +1,10 @@
+FROM python:3.7
+
+USER root
+
+RUN pip install numpy pillow sympy opencv-python opencv-contrib-python
+
+COPY entrypoint.py /
+COPY scripts/ /scripts/
+
+ENTRYPOINT [ "/entrypoint.py" ]
